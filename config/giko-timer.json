@@ -1,0 +1,43 @@
+{
+    "broadcaster": "Giko",
+    "sync": 
+    {
+        "url": "",
+        "user" : "",
+        "password" : "",
+        "interval" : "" 
+    },
+    "timers": 
+    {
+        "dynamis": [ {
+            "day": "wednesday",
+            "gmt": "22:00"
+        }, {
+            "day": "sunday",
+            "gmt": "20:00"
+        }],
+        "monsters": {
+            "adamantoise": true,
+            "behemoth": true,
+            "cerberus": true,
+            "dynamis": true,
+            "fafnir": true,
+            "hydra": true,
+            "jormungand": true,
+            "khimaira": true,
+            "king arthro": true,
+            "tiamat": true,
+            "vrtra": true
+        }
+    },
+    "ui": {
+        "bgcolor": "0x80000000",
+        "font": {
+            "colors": [ "cFF00FF00", "cFFFFFF00", "cff888888" ],
+            "family": "Arial",
+            "size": 12
+        },
+        "position": [ 150, 200 ],
+        "visible": true
+    }
+}

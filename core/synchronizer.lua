@@ -29,7 +29,6 @@ syncronizer.load = function()
                     local c_tod = death.get_tod(mob)
         
                     if c_tod == nil or (c_tod.created_at ~= nil and c_tod.created_at < s_tod.created_at) then
-                        print('fetching:' .. mob)
                         c_tods[mob] = json:encode(s_tod)
                         u_flag = true
                     end

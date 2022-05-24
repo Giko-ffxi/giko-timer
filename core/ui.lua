@@ -91,7 +91,7 @@ ui.timers.monsters = function(timers)
         if enabled then
             local window = death.get_window(key)
             if window ~= nil and window.countdown ~= nil then
-                table.insert(timers, string.format('|%s|  %s - W%d - %s %s', config.ui.font.colors[math.min(math.floor(window.countdown / 900), 2) + 1], common.to_time(window.countdown), window.count, window.name, window.day ~= nil and string.format('- Day %s', window.day) or ''))  
+                table.insert(timers, string.format('|%s|  %s - W%d - %s %s', config.ui.font.colors[math.min(math.floor(window.countdown / 900), 2) + 1], common.to_time(window.countdown - config.offset), window.count, window.name, window.day ~= nil and string.format('- Day %s', window.day) or ''))  
             end
         end
     end

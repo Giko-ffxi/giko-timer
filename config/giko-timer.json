@@ -1,5 +1,6 @@
 {
     "broadcaster": "Giko",
+    "offset": 5,
     "sync": 
     {
         "url": "",

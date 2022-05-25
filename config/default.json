@@ -1,12 +1,13 @@
 {
     "broadcaster": "Giko",
-    "offset": 5,
+    "offset": "5s",
+    "grace": "10s",
     "sync": 
     {
         "url": "",
         "user" : "",
         "password" : "",
-        "interval" : "" 
+        "interval" : "30s" 
     },
     "timers": 
     {

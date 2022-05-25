@@ -11,7 +11,7 @@ local syncronizer = {}
 
 syncronizer.load = function()
 
-    if config.sync.url ~= nil and config.sync.user  ~= nil and config.sync.password  ~= nil and config.sync.interval ~= nil then
+    if config.sync.url ~= "" and config.sync.user  ~= "" and config.sync.password  ~= "" and config.sync.interval ~= "" then
             
         return ashita.timer.create('sync', common.to_seconds(config.sync.interval), 0, function()
             
@@ -45,7 +45,7 @@ syncronizer.load = function()
 
     end
 
-    if config.broadcaster ~= nil then
+    if config.broadcaster ~= "" then
 
         chat.tell(config.broadcaster, '@giko sync')
 

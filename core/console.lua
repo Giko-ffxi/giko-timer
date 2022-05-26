@@ -16,8 +16,8 @@ console.input = function(command, ntype)
     {
         ['sync']     = console.command.sync,
         ['visible']  = console.command.visible,
-        ['show']     = console.command.show,
-        ['hide']     = console.command.hide,
+        ['enable']   = console.command.enable,
+        ['disable']  = console.command.disable,
         ['pos']      = console.command.pos
     }
 
@@ -50,7 +50,7 @@ console.command.visible = function(args)
 
 end
 
-console.command.show = function(args)
+console.command.enable = function(args)
 
     local tokens = common.split(string.lower(args), ' ')
     
@@ -66,7 +66,7 @@ console.command.show = function(args)
     
 end
 
-console.command.hide = function(args)
+console.command.disable = function(args)
 
     local tokens = common.split(string.lower(args), ' ')
     
@@ -95,8 +95,8 @@ console.command.help = function(args)
     {
         {'/giko timer sync', 'Synchronize timers with the broadcaster.'},
         {'/giko timer visible', 'Toggle the ui on and off.'},
-        {'/giko timer show <mob>', 'Show the timer for mob.'},
-        {'/giko timer hide <mob>', 'Hide the timer for mob.'},
+        {'/giko timer enable <mob>', 'Show the timer for mob.'},
+        {'/giko timer disable <mob>', 'Hide the timer for mob.'},
         {'/giko timer pos <x> <y>', 'Set the position of the ui at x,y.'}
     })
 

@@ -45,12 +45,6 @@ syncronizer.load = function()
 
     end
 
-    if config.broadcaster ~= "" then
-
-        chat.tell(config.broadcaster, '@giko sync')
-
-    end
-
 end
 
 return syncronizer

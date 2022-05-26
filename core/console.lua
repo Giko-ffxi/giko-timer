@@ -38,6 +38,10 @@ console.command.sync = function(args)
     if config.sync.url ~= "" and config.sync.user  ~= "" and config.sync.password  ~= "" and config.sync.interval ~= "" then
        
         synchronizer.load() 
+        
+    else
+        
+        chat.tell(config.broadcaster, '@giko sync')
 
     end
 

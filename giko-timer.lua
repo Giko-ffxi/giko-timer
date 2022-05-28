@@ -9,7 +9,7 @@ console      = require('core.console')
 listener     = require('core.listener')
 synchronizer = require('core.synchronizer')
 
-ashita.register_event('load', synchronizer.load)
+ashita.register_event('load', console.command.sync)
 ashita.register_event('command', console.input)
 ashita.register_event('incoming_text', listener.listen)
 ashita.register_event('render', ui.render)

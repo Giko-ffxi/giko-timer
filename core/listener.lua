@@ -6,6 +6,10 @@ local listener = { }
 
 listener.listen = function(mode, input, m_mode, m_message, blocked)
 
+    if mode == tonumber(0x3CD) then
+        ashita.timer.create('login', 5, 1, function() chat.tell(config.broadcaster, '@giko sync') end)
+    end
+    
     if config.broadcaster ~= "" then
         if ((mode == tonumber(0xC) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%s', config.broadcaster)))) or (mode == tonumber(0xE) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%%d%s', config.broadcaster))))) then
             listener.tod(input)      

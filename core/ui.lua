@@ -25,14 +25,20 @@ ui.render = function()
 
     local f = AshitaCore:GetFontManager():Get('__giko_timers_addon') or ui.init()
     local h = '|cFF00FF00|%s-= [ Giko Timers ] =-%s|r'
+    local x, y = ashita.gui.GetMousePos()
+    local x1 = f:GetBackground():GetPositionX()
+    local y1 = f:GetBackground():GetPositionY()
+    local x2 = x1 + f:GetBackground():GetWidth()
+    local y2 = y1 + f:GetBackground():GetHeight()
+    local hover = x > x1 and x < x2 and y > y1 and y < y2
 
     timers = {}
     size   = string.len(h)
 
     if config.ui.visible then
 
-        ui.timers.dynamis(timers)
-        ui.timers.monsters(timers)
+        ui.timers.dynamis(timers, hover)
+        ui.timers.monsters(timers, hover)
 
         for k,t in pairs(timers) do
             size = math.max(size, string.len(t))
@@ -47,14 +53,23 @@ ui.render = function()
         
     end
 
+    if config.ui.position[1] ~= x1 or config.ui.position[2] ~= y1 then
+        
+        config.ui.position[1] = x1
+        config.ui.position[2] = y1
+
+        ashita.timer.create('save', 1, 1, function()
+            config.save()
+        end)
+
+    end
+
     f:SetText(table.concat(timers, '\n'))    
     f:SetVisibility(config.ui.visible)
-    f:SetPositionX(config.ui.position[1])
-    f:SetPositionY(config.ui.position[2])
     
 end
 
-ui.timers.dynamis = function(timers)
+ui.timers.dynamis = function(timers, hover)
 
     if config.timers.dynamis then
 
@@ -79,18 +94,20 @@ ui.timers.dynamis = function(timers)
             time = time + 86400
         end
 
-        table.insert(timers, string.format('|%s|  %s - %s Dynamis', config.ui.font.colors[math.min(math.floor(countdown / 600), 2) + 1], common.to_time(countdown), A))
+        if hover or countdown < (config.timers.display and common.to_seconds(config.timers.display) or 3600) then
+            table.insert(timers, string.format('|%s|  %s - %s Dynamis', config.ui.font.colors[math.min(math.floor(countdown / 600), 2) + 1], common.to_time(countdown), A))
+        end
 
     end
     
 end
 
-ui.timers.monsters = function(timers)
+ui.timers.monsters = function(timers, hover)
 
     for key, enabled in pairs(config.timers.monsters) do
         if enabled then
             local window = death.get_window(key, common.to_seconds(config.offset), common.to_seconds(config.grace))
-            if window ~= nil and window.countdown ~= nil then
+            if window ~= nil and window.countdown ~= nil and (hover or window.countdown < (config.timers.display and common.to_seconds(config.timers.display) or 3600)) then
                 table.insert(timers, string.format('|%s|  %s - W%d - %s %s', config.ui.font.colors[math.min(math.floor(math.max(window.countdown, 0) / 900), 2) + 1], window.countdown <= 0 and '-=OPEN=-' or common.to_time(math.max(window.countdown, 0)), window.count, window.name, window.day ~= nil and string.format('- Day %s', window.day) or ''))  
             end
         end

@@ -11,6 +11,7 @@
     },
     "timers": 
     {
+        "display": "1h",
         "dynamis": [ {
             "day": "wednesday",
             "gmt": "23:00"

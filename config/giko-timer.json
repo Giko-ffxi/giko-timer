@@ -1,16 +1,8 @@
 {
     "broadcaster": "Giko",
-    "offset": "5s",
     "grace": "10s",
-    "sync": 
-    {
-        "url": "",
-        "user" : "",
-        "password" : "",
-        "interval" : "30s" 
-    },
-    "timers": 
-    {
+    "offset": "1s",
+    "timers": {
         "display": "1h",
         "dynamis": [ {
             "day": "wednesday",
@@ -18,7 +10,7 @@
         }, {
             "day": "sunday",
             "gmt": "21:00"
-        }],
+        } ],
         "monsters": {
             "adamantoise": true,
             "behemoth": true,
@@ -40,7 +32,7 @@
             "family": "Arial",
             "size": 12
         },
-        "position": [ 300, 550 ],
+        "position": [ 1606, 121 ],
         "visible": true
     }
 }

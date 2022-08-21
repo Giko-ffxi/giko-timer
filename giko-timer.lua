@@ -7,7 +7,6 @@ _addon.version 	= '1.0.0'
 ui           = require('core.ui')
 console      = require('core.console')
 listener     = require('core.listener')
-synchronizer = require('core.synchronizer')
 
 ashita.register_event('load', console.command.sync)
 ashita.register_event('command', console.input)

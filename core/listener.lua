@@ -2,6 +2,7 @@ local config   = require('lib.giko.config')
 local common   = require('lib.giko.common')
 local monster  = require('lib.giko.monster')
 local death    = require('lib.giko.death')
+local chat     = require('lib.giko.chat')
 local listener = { }
 
 listener.listen = function(mode, input, m_mode, m_message, blocked)

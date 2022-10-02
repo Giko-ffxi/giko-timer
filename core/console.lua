@@ -22,8 +22,7 @@ console.input = function(command, ntype)
         ['add']      = console.command.add,
         ['share']    = console.command.share,
         ['remove']   = console.command.remove,
-        ['reset']    = console.command.reset,
-        ['pos']      = console.command.pos
+        ['reset']    = console.command.reset
     }
 
     if registry[command] then

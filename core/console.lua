@@ -92,7 +92,7 @@ console.command.share = function(args)
     if player ~= nil and timer ~= nil then        
         controller.share(player, timer)
     else
-        print("Invalid share: /giko timer share <player> <timer>")
+        print("Invalid share: /giko timer share <player> <label>")
     end
     
 end
@@ -145,6 +145,7 @@ console.command.help = function(args)
         {'/giko timer enable <mob>', 'Show the timer for mob.'},
         {'/giko timer disable <mob>', 'Hide the timer for mob.'},
         {'/giko timer add <duration> <label>', 'Add a custom timer.'},
+        {'/giko timer share <player> <label>', 'Share a timer.'},
         {'/giko timer remove <label>', 'Remove a custom timer.'},
         {'/giko timer reset <label>', 'Reset a custom timer.'},
     })

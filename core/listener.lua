@@ -3,21 +3,57 @@ local common   = require('lib.giko.common')
 local monster  = require('lib.giko.monster')
 local death    = require('lib.giko.death')
 local chat     = require('lib.giko.chat')
-local listener = { }
 
-listener.listen = function(mode, input, m_mode, m_message, blocked)
+local listener = { character = nil }
 
-    if mode == tonumber(0x3CD) then
+listener.packet = function(mode, input, m_mode, m_message, blocked)
+
+    local entity = GetPlayerEntity()
+
+    if entity ~= nil and entity.Name ~= listener.character then
+
         ashita.timer.create('login', 5, 1, function() chat.tell(config.broadcaster, '@giko sync') end)
-    end
-    
-    if config.broadcaster ~= "" then
-        if ((mode == tonumber(0xC) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%s', config.broadcaster)))) or (mode == tonumber(0xE) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%%d%s', config.broadcaster))))) then
-            listener.tod(input)      
-        end
+        listener.character = entity.Name
+
     end
 
     return false
+
+end
+
+listener.text = function(mode, input, m_mode, m_message, blocked)
+    
+    if config.broadcaster ~= "" then
+     
+        if ((mode == tonumber(0xC) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%s', config.broadcaster)))) or (mode == tonumber(0xE) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%%d%s', config.broadcaster))))) then
+            listener.tod(input)      
+        end
+
+    end
+
+    for k,share in ipairs(config.sharelist) do
+
+        if ((mode == tonumber(0xC) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%sTimer', share))))) then
+            listener.timer(input)      
+        end    
+
+        if ((mode == tonumber(0xC) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%sToD', share))))) then
+            listener.tod(input)      
+        end 
+
+    end
+
+    return false
+
+end
+
+listener.timer = function(input)
+
+    local lbl, Y, m, d, H, M, S, z, l = string.match(input, '%[Timer%]%[(%w+)%]%[(%d%d%d%d)%-(%d%d)%-(%d%d)%s(%d%d):(%d%d):(%d%d)%s([%-%+]%d%d%d%d)%]%[(%w+)%]')
+
+    if Y and m and d and H and M and S and z ~= nil then
+        controller.custom.add(lbl, os.date('%Y-%m-%d %H:%M:%S', os.time({year=Y, month=m, day=d, hour=H, min=M, sec=S}) - common.offset_to_seconds(z)), l)
+    end
 
 end
 
@@ -28,7 +64,7 @@ listener.tod = function(input)
     for k,mob in ipairs(monster.notorious) do 
             
         for k,q in pairs(mob.names) do
-
+ 
             local Y, m, d, H, M, S, z, D = string.match(input, string.format('%%[ToD%%]%%[%s%%]%%[(%%d%%d%%d%%d)%%-(%%d%%d)%%-(%%d%%d)%%s(%%d%%d):(%%d%%d):(%%d%%d)%%s([%%-%%+]%%d%%d%%d%%d)%%]', q[1]))
             local D                      = string.match(input, string.format('%%[ToD%%]%%[%s%%]%%[%%d%%d%%d%%d%%-%%d%%d%%-%%d%%d%%s%%d%%d:%%d%%d:%%d%%d%%s[%%-%%+]%%d%%d%%d%%d%%]%%[(%%d+)%%]', q[1]))
             local day                    = string.match(input, string.format('%%[Day%%]%%[%s%%]%%[(%%d+)%%]', q[1]))

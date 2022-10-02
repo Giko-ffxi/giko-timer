@@ -1,29 +1,173 @@
 {
     "broadcaster": "Giko",
-    "offset": "1s",
-    "grace": "10s",
-    "timers": 
-    {
-        "display": "1h",
-        "dynamis": [ {
-            "day": "wednesday",
-            "gmt": "23:00"
-        }, {
-            "day": "sunday",
-            "gmt": "21:00"
-        }],
+    "sharelist": [],
+    "timers": {
+        "customs": {
+        },
+        "events": [ {
+            "lbl": "Dynamis",
+            "times": [ {
+                "day": "wednesday",
+                "gmt": "23:00"
+            }, {
+                "day": "sunday",
+                "gmt": "21:00"
+            } ],
+            "visible_at": "1h"
+        } ],
         "monsters": {
-            "adamantoise": true,
-            "behemoth": true,
-            "cerberus": true,
-            "dynamis": true,
-            "fafnir": true,
-            "hydra": true,
-            "jormungand": true,
-            "khimaira": true,
-            "king arthro": true,
-            "tiamat": true,
-            "vrtra": true
+            "adamantoise": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "argus": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "behemoth": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "capricious cassie": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "carmine dobsonfly": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "cerberus": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "fafnir": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "hydra": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "jormungand": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "khimaira": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "king arthro": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "king vinegarroon": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "kreutzet": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "roc": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "serket": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "simurgh": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "tiamat": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "vrtra": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "xolotl": {
+                "alerts": [ {
+                    "play_at": "1m",
+                    "sound": "01.wav"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            }
         }
     },
     "ui": {
@@ -33,7 +177,8 @@
             "family": "Arial",
             "size": 12
         },
-        "position": [ 150, 200 ],
+        "mode": "time",
+        "position": [ 300, 300 ],
         "visible": true
     }
 }

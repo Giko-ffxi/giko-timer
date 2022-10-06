@@ -175,9 +175,9 @@
             "family": "Arial",
             "size": 12
         },
-        "mode": "time",
+        "mode": "countdown",
         "padding": 20,
-        "position": [ 300, 300 ],
+        "position": [ null, null ],
         "visible": true
     }
 }

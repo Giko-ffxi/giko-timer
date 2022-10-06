@@ -5,7 +5,7 @@ local ui     = { frame = {}, days = {}, shift = false, hover = false }
 
 ui.load = function()
 
-    ui.frame  = ui.component('__giko_timer_ui_frame', nil, config.ui.position[1], config.ui.position[2])
+    ui.frame  = ui.component('__giko_timer_ui_frame', nil, config.ui.position[1] or (ashita.gui.io.DisplaySize.x / 2 - 150), config.ui.position[2] or 100)
 
 end
 

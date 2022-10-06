@@ -63,18 +63,18 @@ listener.tod = function(input)
 
     for k,mob in ipairs(monster.notorious) do 
             
-        for k,q in pairs(mob.names) do
+        for n,name in ipairs(common.flatten(mob.names)) do  
  
-            local Y, m, d, H, M, S, z, D = string.match(input, string.format('%%[ToD%%]%%[%s%%]%%[(%%d%%d%%d%%d)%%-(%%d%%d)%%-(%%d%%d)%%s(%%d%%d):(%%d%%d):(%%d%%d)%%s([%%-%%+]%%d%%d%%d%%d)%%]', q[1]))
-            local D                      = string.match(input, string.format('%%[ToD%%]%%[%s%%]%%[%%d%%d%%d%%d%%-%%d%%d%%-%%d%%d%%s%%d%%d:%%d%%d:%%d%%d%%s[%%-%%+]%%d%%d%%d%%d%%]%%[(%%d+)%%]', q[1]))
-            local day                    = string.match(input, string.format('%%[Day%%]%%[%s%%]%%[(%%d+)%%]', q[1]))
+            local Y, m, d, H, M, S, z, D = string.match(input, string.format('%%[ToD%%]%%[%s%%]%%[(%%d%%d%%d%%d)%%-(%%d%%d)%%-(%%d%%d)%%s(%%d%%d):(%%d%%d):(%%d%%d)%%s([%%-%%+]%%d%%d%%d%%d)%%]', name))
+            local D                      = string.match(input, string.format('%%[ToD%%]%%[%s%%]%%[%%d%%d%%d%%d%%-%%d%%d%%-%%d%%d%%s%%d%%d:%%d%%d:%%d%%d%%s[%%-%%+]%%d%%d%%d%%d%%]%%[(%%d+)%%]', name))
+            local day                    = string.match(input, string.format('%%[Day%%]%%[%s%%]%%[(%%d+)%%]', name))
 
             if Y and m and d and H and M and S and z ~= nil then
-                death.set_tod(q[1], os.date('%Y-%m-%d %H:%M:%S', os.time({year=Y, month=m, day=d, hour=H, min=M, sec=S}) - common.offset_to_seconds(z)), D or 0)
+                death.set_tod(name, os.date('%Y-%m-%d %H:%M:%S', os.time({year=Y, month=m, day=d, hour=H, min=M, sec=S}) - common.offset_to_seconds(z)), D or 0)
             end
 
             if day ~= nil then
-                death.set_day(q[1], day - 1)
+                death.set_day(name, day - 1)
             end
 
         end

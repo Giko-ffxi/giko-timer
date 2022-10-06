@@ -57,7 +57,7 @@ custom.get_timers = function()
         end
 
         if countdown ~= nil and countdown > 0 then
-            table.insert(timers, {time = os.date('%m-%d %H:%M:%S', common.gmt_to_local_time(timer.gmt) + timer.len), left = math.max(countdown, 0), lbl = string.format('|%s|%s - %s', config.ui.font.colors[math.min(math.floor(countdown / 600), 2) + 1], config.ui.mode ~= "countdown" and common.to_time(math.max(countdown, 0)) or os.date('%m-%d %H:%M:%S', common.gmt_to_local_time(timer.gmt) + timer.len), timer.lbl)})
+            table.insert(timers, {time = os.date('%m-%d %H:%M:%S', common.gmt_to_local_time(timer.gmt) + timer.len), left = math.max(countdown, 0), lbl = string.format('|%s|%s - %s', config.ui.font.colors[math.min(math.floor(countdown / 600), 2) + 1], config.ui.mode ~= "time" and common.to_time(math.max(countdown, 0)) or os.date('%m-%d %H:%M:%S', common.gmt_to_local_time(timer.gmt) + timer.len), timer.lbl)})
         end
 
     end

@@ -24,7 +24,7 @@ hnm.get_timers = function()
                 end
 
                 if ui.hover or window.countdown < (timer.visible_at and common.to_seconds(timer.visible_at) or 3600) then
-                    table.insert(timers, {time = string.sub(window.time, 6), left = math.max(window.countdown, 0), lbl = string.format("|%s|%s - %s %s", config.ui.font.colors[math.min(math.floor(math.max(window.countdown, 0) / 900), 2) + 1], window.countdown <= 0 and '-=OPEN=-' or (config.ui.mode ~= "countdown" and common.to_time(math.max(window.countdown, 0)) or string.sub(window.time, 6)), mob.names.nq[1], #mob.windows.at > 1 and string.format('- %sW%d', window.day ~= nil and string.format('D%d - ', window.day) or '', window.count) or '')})
+                    table.insert(timers, {time = string.sub(window.time, 6), left = math.max(window.countdown, 0), lbl = string.format("|%s|%s - %s %s", config.ui.font.colors[math.min(math.floor(math.max(window.countdown, 0) / 900), 2) + 1], window.countdown <= 0 and '-=OPEN=-' or (config.ui.mode ~= "time" and common.to_time(math.max(window.countdown, 0)) or string.sub(window.time, 6)), mob.names.nq[1], #mob.windows.at > 1 and string.format('- %sW%d', window.day ~= nil and string.format('D%d - ', window.day) or '', window.count) or '')})
                 end
 
             end

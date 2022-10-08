@@ -70,11 +70,11 @@ listener.tod = function(input)
             local day                    = string.match(input, string.format('%%[Day%%]%%[%s%%]%%[(%%d+)%%]', name))
 
             if Y and m and d and H and M and S and z ~= nil then
-                death.set_tod(name, os.date('%Y-%m-%d %H:%M:%S', os.time({year=Y, month=m, day=d, hour=H, min=M, sec=S}) - common.offset_to_seconds(z)), D or 0)
+                death.set_tod(name, os.date('%Y-%m-%d %H:%M:%S', os.time({year=Y, month=m, day=d, hour=H, min=M, sec=S}) - common.offset_to_seconds(z)), tonumber(D or 0))
             end
 
             if day ~= nil then
-                death.set_day(name, day - 1)
+                death.set_day(name, tonumber(day - 1))
             end
 
         end

@@ -2,8 +2,7 @@
     "broadcaster": "Giko",
     "sharelist": [],
     "timers": {
-        "customs": {
-        },
+        "customs": [],
         "events": [ {
             "lbl": "Dynamis",
             "times": [ {
@@ -12,6 +11,20 @@
             }, {
                 "day": "sunday",
                 "gmt": "21:00"
+            } ],
+            "visible_at": "1h"
+        }, {
+            "lbl": "Sea",
+            "times": [ {
+                "day": "wednesday",
+                "gmt": "00:00"
+            } ],
+            "visible_at": "1h"
+        }, {
+            "lbl": "Sky",
+            "times": [ {
+                "day": "thursday",
+                "gmt": "23:00"
             } ],
             "visible_at": "1h"
         } ],
@@ -177,7 +190,8 @@
             "family": "Arial",
             "size": 12
         },
-        "mode": "countdown",
+        "mode": "time",
+        "padding": 20,
         "position": [ null, null ],
         "visible": true
     }

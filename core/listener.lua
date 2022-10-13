@@ -36,11 +36,11 @@ listener.text = function(mode, input, m_mode, m_message, blocked)
 
     for k,share in ipairs(config.sharelist) do
 
-        if ((mode == tonumber(0xC) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%sTimer', share))))) then
+        if ((mode == tonumber(0xC) and (string.find(string.lower(string.gsub(input, '[%W]', '')), string.lower(string.format('^%sTimer', share)))))) then
             listener.timer(input)      
         end    
 
-        if ((mode == tonumber(0xC) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%sToD', share))))) then
+        if ((mode == tonumber(0xC) and (string.find(string.lower(string.gsub(input, '[%W]', '')), string.lower(string.format('^%sToD', share)))))) then
             listener.tod(input)      
         end 
 
@@ -52,7 +52,7 @@ end
 
 listener.timer = function(input)
 
-    local lbl, Y, m, d, H, M, S, z, l = string.match(input, '%[Timer%]%[(%w+)%]%[(%d%d%d%d)%-(%d%d)%-(%d%d)%s(%d%d):(%d%d):(%d%d)%s([%-%+]%d%d%d%d)%]%[(%w+)%]')
+    local lbl, Y, m, d, H, M, S, z, l = string.match(input, '%[Timer%]%[([%w%s]+)%]%[(%d%d%d%d)%-(%d%d)%-(%d%d)%s(%d%d):(%d%d):(%d%d)%s([%-%+]%d%d%d%d)%]%[(%w+)%]')
 
     if Y and m and d and H and M and S and z ~= nil then
         controller.custom.add(lbl, os.date('%Y-%m-%d %H:%M:%S', os.time({year=Y, month=m, day=d, hour=H, min=M, sec=S}) - common.offset_to_seconds(z)), l)

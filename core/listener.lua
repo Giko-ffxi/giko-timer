@@ -28,7 +28,7 @@ listener.text = function(mode, input, m_mode, m_message, blocked)
     
     if config.broadcaster ~= "" then
      
-        if ((mode == tonumber(0xC) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%s', config.broadcaster)))) or (mode == tonumber(0xE) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%%d%s', config.broadcaster)))) or (mode == tonumber(0x6) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%%d%s', config.broadcaster))))) then
+        if ((mode == tonumber(0xC) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%s', config.broadcaster)))) or ((mode == tonumber(0xE) or mode == tonumber(0xD6)) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%%d%s', config.broadcaster)))) or ((mode == tonumber(0x6) or mode == tonumber(0xD5)) and (string.find(string.gsub(input, '[%W]', ''), string.format('^%%d%s', config.broadcaster))))) then
             listener.tod(input)      
         end
 

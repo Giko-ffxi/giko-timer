@@ -1,3 +1,4 @@
+local timer   = require('lib.ashita.timer')
 local config  = require('lib.giko.config')
 local common  = require('lib.giko.common')
 local death   = require('lib.giko.death')
@@ -8,12 +9,18 @@ local controller = { custom = require('core.timers.custom'), event = require('co
 controller.load = function()
 
     ui.load()
+    
+    ashita.timer.create('purge', 15, 0, function() death.purge() end)
 
 end
 
 controller.unload = function()
 
     ui.unload()
+    
+    if ashita.timer.is_timer('purge') then
+        ashita.timer.remove_timer('purge')
+    end
 
 end
 

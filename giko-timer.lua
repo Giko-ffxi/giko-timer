@@ -2,7 +2,7 @@ package.path = (string.gsub(_addon.path, '[^\\]+\\?$', '')) .. 'giko-common\\' .
 
 _addon.author 	= 'giko'
 _addon.name 	= 'giko-timer'
-_addon.version 	= '1.0.5'
+_addon.version 	= '1.0.6'
 
 ui         = require('core.ui')
 console    = require('core.console')
@@ -17,4 +17,3 @@ ashita.register_event('render', controller.render)
 ashita.register_event('mouse', ui.mouse)
 ashita.register_event('key', ui.key)
 ashita.register_event('unload', controller.unload)
-

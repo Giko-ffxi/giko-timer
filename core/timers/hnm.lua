@@ -2,6 +2,7 @@ local config  = require('lib.giko.config')
 local death   = require('lib.giko.death')
 local monster = require('lib.giko.monster')
 local common  = require('lib.giko.common')
+local sound   = require('lib.giko.sound')
 local hnm     = {}
 
 hnm.get_timers = function()
@@ -18,13 +19,13 @@ hnm.get_timers = function()
             if window ~= nil and window.countdown ~= nil then
 
                 for z, alert in ipairs(timer.alerts) do
-                    if window.countdown - 1 == common.to_seconds(alert.play_at) then
-                        ashita.timer.create('alert', 1, 1, function() ashita.misc.play_sound(string.format('%s\\sounds\\%s', _addon.path, alert.sound)) end)
+                    if window.countdown - 1 == common.to_seconds(alert.play_at) and not config.ui.sound.muted then
+                        sound.call((alert.sound and alert.sound.call) or config.ui.sound.call or 1, (alert.sound and alert.sound.volume) or config.ui.sound.volume or 5, (alert.sound and alert.sound.lib) or config.ui.sound.lib or 'giko.call')
                     end
                 end
 
                 if ui.hover or window.countdown < (timer.visible_at and common.to_seconds(timer.visible_at) or 3600) then
-                    table.insert(timers, {time = string.sub(window.time, 6), left = math.max(window.countdown, 0), lbl = string.format("|%s|%s - %s %s", config.ui.font.colors[math.min(math.floor(math.max(window.countdown, 0) / 900), 2) + 1], window.countdown <= 0 and '-=OPEN=-' or (config.ui.mode ~= "time" and common.to_time(math.max(window.countdown, 0)) or string.sub(window.time, 6)), mob.names.nq[1], #mob.windows.at > 1 and string.format('- %sW%d', window.day ~= nil and string.format('D%d - ', window.day) or '', window.count) or '')})
+                    table.insert(timers, {time = string.sub(window.time, 6), countdown = window.countdown, lbl = string.format("%s - %s%s%s", config.ui.mode ~= "time" and common.to_time(math.max(window.countdown, 0)) or string.sub(window.time, 6), mob.names.nq[1], window.countdown <= 0 and string.format(' - Open - %s ', common.to_duration(common.to_seconds(window.length) + window.countdown)) or '', #mob.windows.at > 1 and string.format(' - %sW%d', window.day ~= nil and string.format(' D%d - ', window.day) or '', window.count) or '')})
                 end
 
             end

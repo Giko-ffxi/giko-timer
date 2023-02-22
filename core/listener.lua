@@ -20,6 +20,23 @@ listener.packet = function(mode, input, m_mode, m_message, blocked)
 
     end
 
+    if (id == 0x38) then
+
+        local index    = struct.unpack('H', packet, 0x10 + 1)
+        local deceased = GetEntity(index)
+
+        if deceased ~= nil then
+            for key,mob in ipairs(monster.notorious) do
+                for n,name in ipairs(common.flatten(mob.names)) do
+                    if string.lower(deceased.Name) == string.lower(name) and deceased.SpawnFlags == 0x0010 then
+                        death.memory[mob.names.nq[1]] = nil
+                    end
+                end
+            end
+        end       
+
+    end
+
     return false
 
 end

@@ -1,5 +1,6 @@
 local config  = require('lib.giko.config')
 local common  = require('lib.giko.common')
+local sound   = require('lib.giko.sound')
 local event   = {}
 
 event.get_timers = function()
@@ -32,12 +33,12 @@ event.get_timers = function()
                 time = time + 86400
             end
 
-            if countdown - 1 == 60 then
-                ashita.timer.create('alert', 1, 1, function() ashita.misc.play_sound(string.format('%s\\sounds\\%s', _addon.path, 'default.wav')) end)
+            if countdown - 1 == 60 and not config.ui.muted then
+                sound.call(config.ui.sound.call or 1, config.ui.sound.volume or 5, config.ui.sound.lib or 'giko.call')
             end
 
             if ui.hover or countdown < (event.visible_at and common.to_seconds(event.visible_at) or 3600) then
-                table.insert(timers, {time = os.date('%m-%d %H:%M:%S', event_at), left = math.max(countdown, 0), lbl = string.format('|%s|%s - %s', config.ui.font.colors[math.min(math.floor(countdown / 600), 2) + 1], config.ui.mode ~= "time" and common.to_time(math.max(countdown, 0)) or os.date('%m-%d %H:%M:%S', event_at), event.lbl)})
+                table.insert(timers, {time = os.date('%m-%d %H:%M:%S', event_at), countdown = math.max(countdown, 0), lbl = string.format('%s - %s', config.ui.mode ~= "time" and common.to_time(math.max(countdown, 0)) or os.date('%m-%d %H:%M:%S', event_at), event.lbl)})
             end
 
         end

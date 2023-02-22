@@ -7,10 +7,10 @@
             "lbl": "Dynamis",
             "times": [ {
                 "day": "wednesday",
-                "gmt": "23:00"
+                "gmt": "24:00"
             }, {
                 "day": "sunday",
-                "gmt": "21:00"
+                "gmt": "22:00"
             } ],
             "visible_at": "1h"
         }, {
@@ -20,163 +20,186 @@
                 "gmt": "00:00"
             } ],
             "visible_at": "1h"
-        }, {
-            "lbl": "Sky",
-            "times": [ {
-                "day": "thursday",
-                "gmt": "23:00"
-            } ],
-            "visible_at": "1h"
         } ],
         "monsters": {
             "adamantoise": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "argus": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "behemoth": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "capricious cassie": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "carmine dobsonfly": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "cerberus": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "devil manta": {
+                "alerts": [ {
+                    "play_at": "1m"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "eastern shadow": {
+                "alerts": [ {
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "fafnir": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "hydra": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "jormungand": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
-                "enabled": true,
+                "enabled": false,
                 "visible_at": "1h"
             },
             "khimaira": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "king arthro": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "king vinegarroon": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "kreutzet": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "orcish overlord": {
+                "alerts": [ {
+                    "play_at": "1m"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "padfoot": {
+                "alerts": [ {
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "roc": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "serket": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "simurgh": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "tiamat": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "voluptuous vivian": {
+                "alerts": [ {
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "vrtra": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "western shadow": {
+                "alerts": [ {
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
             },
             "xolotl": {
                 "alerts": [ {
-                    "play_at": "1m",
-                    "sound": "01.wav"
+                    "play_at": "1m"
+                } ],
+                "enabled": true,
+                "visible_at": "1h"
+            },
+            "yagudo avatar": {
+                "alerts": [ {
+                    "play_at": "1m"
                 } ],
                 "enabled": true,
                 "visible_at": "1h"
@@ -190,9 +213,15 @@
             "family": "Arial",
             "size": 12
         },
-        "mode": "time",
+        "mode": "countdown",
+        "sound": {
+            "call": 1,
+            "lib":"giko.call",
+            "muted": false,
+            "volume": 5
+        },
         "padding": 20,
-        "position": [ null, null ],
+        "position": [],
         "visible": true
     }
 }

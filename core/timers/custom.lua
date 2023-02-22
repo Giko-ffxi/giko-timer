@@ -1,6 +1,7 @@
 local config  = require('lib.giko.config')
 local common  = require('lib.giko.common')
 local cache   = require('lib.giko.cache')
+local sound   = require('lib.giko.sound')
 local json    = require('json.json')
 
 local custom  = { memory = {} , path = string.format('%s..\\giko-cache\\cache\\giko.timer.csv', _addon.path) }
@@ -52,12 +53,12 @@ custom.get_timers = function()
 
         local countdown = os.difftime(common.gmt_to_local_time(timer.gmt) + timer.len, os.time())
 
-        if countdown - 1 == 60 then
-            ashita.timer.create('alert', 1, 1, function() ashita.misc.play_sound(string.format('%s\\sounds\\%s', _addon.path, 'default.wav')) end)
+        if countdown - 1 == 60 and not config.ui.muted then
+            sound.call(config.ui.sound.call or 1, config.ui.sound.volume or 5, config.ui.sound.lib or 'giko.call')
         end
 
         if countdown ~= nil and countdown > 0 then
-            table.insert(timers, {time = os.date('%m-%d %H:%M:%S', common.gmt_to_local_time(timer.gmt) + timer.len), left = math.max(countdown, 0), lbl = string.format('|%s|%s - %s', config.ui.font.colors[math.min(math.floor(countdown / 600), 2) + 1], config.ui.mode ~= "time" and common.to_time(math.max(countdown, 0)) or os.date('%m-%d %H:%M:%S', common.gmt_to_local_time(timer.gmt) + timer.len), timer.lbl)})
+            table.insert(timers, {time = os.date('%m-%d %H:%M:%S', common.gmt_to_local_time(timer.gmt) + timer.len), countdown = math.max(countdown, 0), lbl = string.format('%s - %s', config.ui.mode ~= "time" and common.to_time(math.max(countdown, 0)) or os.date('%m-%d %H:%M:%S', common.gmt_to_local_time(timer.gmt) + timer.len), timer.lbl)})
         end
 
     end

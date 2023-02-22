@@ -5,15 +5,17 @@ local ui     = { frame = {}, days = {}, shift = false, hover = false }
 
 ui.load = function()
 
-    ui.frame  = ui.component('__giko_timer_ui_frame', nil, config.ui.position[1] or (ashita.gui.io.DisplaySize.x / 2 - 150), config.ui.position[2] or 100)
+    ui.frame = ui.component('__giko_timer_ui_frame', nil, config.ui.position[1] or (ashita.gui.io.DisplaySize.x / 2 - 150), config.ui.position[2] or 100)
 
 end
 
 ui.render = function(timers)
 
-    table.sort(timers, function (a, b) return a.left < b.left end)
+    table.sort(timers, function (a, b) return a.countdown < b.countdown end)
+    table.foreach(timers, ui.colorize)
     
     ui.frame:SetText(#timers > 0 and table.concat(common.pluck(timers, 'lbl'), '\n') or '|cff888888|                      -                      ')
+    ui.frame:SetVisibility(GetPlayerEntity() ~= nil)
 
 end
 
@@ -39,6 +41,22 @@ ui.component = function(name, img, x, y, w, h, visibility)
     component:SetAutoResize(w == nil and h == nil)
 
     return component
+
+end
+
+ui.colorize = function(k, timer)
+
+    if timer.countdown <= 0 then
+        timer.lbl = '|cff00ff00|' .. timer.lbl
+    elseif timer.countdown < 60 then
+        timer.lbl = '|cffff7d40|' .. timer.lbl
+    elseif timer.countdown < 300 then
+        timer.lbl = '|cFFFFFF00|' .. timer.lbl
+    elseif timer.countdown < 1800 then
+        timer.lbl = '|cffc3dbff|' .. timer.lbl
+    else
+        timer.lbl = '|cff888888|' .. timer.lbl
+    end
 
 end
 

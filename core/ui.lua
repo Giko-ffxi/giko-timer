@@ -15,7 +15,7 @@ ui.render = function(timers)
     table.foreach(timers, ui.colorize)
     
     ui.frame:SetText(#timers > 0 and table.concat(common.pluck(timers, 'lbl'), '\n') or '|cff888888|                      -                      ')
-    ui.frame:SetVisibility(GetPlayerEntity() ~= nil)
+    ui.frame:SetVisibility(GetPlayerEntity() ~= nil and config.ui.visible)
 
 end
 
